@@ -1,5 +1,4 @@
 lab/lab_1/.vscode
-*.o
+
 *.c
-*.pdf
 

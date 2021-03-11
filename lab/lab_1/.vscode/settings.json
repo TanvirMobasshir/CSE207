@@ -1,6 +1,0 @@
-{
-    "editor.suggest.showStatusBar": true,
-    "files.associations": {
-        "stdio.h": "c"
-    }
-}
