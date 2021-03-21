@@ -5,7 +5,7 @@ struct Point{
     float x, y;
 };
 
-float distance(struct Point * A, struct Point * B){
+float distance(struct Point *A, struct Point *B){
     return sqrt(pow((A->x - B->x), 2) + pow((A->y - B->y), 2));
 }
 
