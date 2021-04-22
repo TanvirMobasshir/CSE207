@@ -8,7 +8,7 @@ void swap(int *x, int *y){
     *y = temp;
 }
 
-void selection_sort(int n, int *data){
+void bubble_sort(int n, int *data){
 
     for (int i = 0; i < n; i++){
         for (int j = i; j < n; j++){       
@@ -58,7 +58,7 @@ void main(){
     printf("What element do you want to search: ");
     scanf("%d", &search_element);
     
-    selection_sort(n, data);
+    bubble_sort(n, data);
     int result = binary_search(n, data, search_element);
 
     if (result != 0){

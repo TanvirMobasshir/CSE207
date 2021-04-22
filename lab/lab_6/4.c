@@ -8,17 +8,14 @@ void swap(int *x, int *y){
     *y = temp;
 }
 
-void selection_sort(int n, int *data){
-    
-    int min_indx;
+void bubble_sort(int n, int *data){
+
     for (int i = 0; i < n; i++){
-        min_indx = i;
         for (int j = i; j < n; j++){       
-            if (data[j] < data[min_indx]){
-                min_indx = j;
+            if (data[j] < data[i]){
+                swap(&data[i], &data[j]);
             }
         }
-        swap(&data[min_indx], &data[i]);
     }
 }
 
@@ -35,7 +32,7 @@ void main(){
         scanf("%d", (data+i));
     }
 
-    selection_sort(n, data);
+    bubble_sort(n, data);
 
     printf("Sorted List: ");
     for (int i = 0; i < n; i++){
