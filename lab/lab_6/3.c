@@ -18,7 +18,7 @@ void selection_sort(int n, int *data){
                 min_indx = j;
             }
         }
-        swap(&data[min_indx], &data[i]);
+        swap(data+min_indx, data+i);
     }
 }
 
