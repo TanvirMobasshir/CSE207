@@ -13,7 +13,7 @@ void main(){
 
     int n, *data, search_element;
 
-    printf("How manydata do you want to input: ");
+    printf("How many data do you want to input: ");
     scanf("%d", &n);
 
     printf("Input the data: ");

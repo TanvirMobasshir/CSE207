@@ -12,7 +12,7 @@ void bubble_sort(int n, int *data){
 
     for (int i = 0; i < n; i++){
         for (int j = i; j < n; j++){       
-            if (data[j] < data[i]){
+            if (*(data+j) < *(data+i)){
                 swap(data+i, data+j);
             }
         }
@@ -22,7 +22,7 @@ void bubble_sort(int n, int *data){
 void main(){
 
     int n, *data;
-    printf("How manydata do you want to input: ");
+    printf("How many data do you want to input: ");
     scanf("%d", &n);
 
     printf("Input the data: ");
@@ -37,7 +37,7 @@ void main(){
     printf("Sorted List: ");
     for (int i = 0; i < n; i++){
 
-        printf("%d ", data[i]);
+        printf("%d ", *(data+i));
     }
     printf("\n");
 
