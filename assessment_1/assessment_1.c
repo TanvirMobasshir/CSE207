@@ -62,8 +62,7 @@ void add_middle(struct Node *prev_node){
     prev_node->next = node;
 }
 
-void delete_begining(struct Node **head)
-{
+void delete_begining(struct Node **head){
 
     if (*head == NULL){
         printf("List is empty, Insert some value first.\n");
@@ -76,8 +75,12 @@ void delete_begining(struct Node **head)
     free(temp);
 }
 
-void delete_middle(struct Node **head)
-{
+void delete_middle(struct Node **head){
+
+    if (*head == NULL){
+        printf("List is empty, Insert some value first.\n");
+        return;
+    }
 
     int key;
     printf("Enter the data you want to delete: ");
@@ -104,6 +107,30 @@ void delete_middle(struct Node **head)
         prev->next = temp->next;
         free(temp);
     }
+}
+
+void delete_end(struct Node **head){
+
+    if (*head == NULL){
+        printf("List is empty, Insert some value first.\n");
+        return;
+    }
+
+    struct Node *temp = *head, *prev;
+ 
+    if (temp != NULL && temp->next == NULL){
+        free(temp);
+        return;
+    }
+ 
+    while (temp != NULL && temp->next != NULL){
+        prev = temp;
+        temp = temp->next;
+    }
+ 
+    free(temp);
+    free(prev);
+    
 }
 
 void display_node(struct Node *first_node){
@@ -177,7 +204,7 @@ int main(){
 
         else if (user_choice == 5){
 
-            printf("apprpved %d\n", user_choice);
+            delete_end(&head);
             puts(str1);
             scanf("%d", &user_choice);
         }
