@@ -43,23 +43,40 @@ void add_end(struct Node **head){
     last->next = node;
 }
 
-void add_middle(struct Node *prev_node){
+void add_middle(struct Node *head){
 
-    if (prev_node == NULL)
+    if (head == NULL)
     {
-      printf("Given node is NULL. Insert value first.\n");
+      printf("List is empty. Insert some value first.\n");
       return;
     }
 
-    int new_data;
+    int key, new_data;
     printf("Input data: ");
     scanf("%d", &new_data);
+    printf("Enter the previous data of the inseted data: ");
+    scanf("%d", &key);
   
-    struct Node* node = (struct Node*)malloc(sizeof(struct Node));
-  
-    node->data  = new_data;
-    node->next = prev_node->next;
-    prev_node->next = node;
+    struct Node *node = (struct Node*)malloc(sizeof(struct Node));
+
+    if (head->data == key){
+        node->data  = new_data;
+        node->next = head->next;
+        head->next = node;
+    }
+
+    struct Node *temp = head, *prev;
+
+    while (temp != NULL && temp->data != key) {
+        prev = temp;
+        temp = temp->next;
+    }
+
+    
+
+    // node->data  = new_data;
+    // node->next = head->next;
+    // head->next = node;
 }
 
 void delete_begining(struct Node **head){
@@ -109,28 +126,26 @@ void delete_middle(struct Node **head){
     }
 }
 
-void delete_end(struct Node **head){
+void delete_end(struct Node *head){
 
-    if (*head == NULL){
+    if (head == NULL){
         printf("List is empty, Insert some value first.\n");
         return;
     }
-
-    struct Node *temp = *head, *prev;
- 
-    if (temp != NULL && temp->next == NULL){
-        free(temp);
-        return;
+    else if(head->next == NULL){
+        free(head);
     }
- 
-    while (temp != NULL && temp->next != NULL){
-        prev = temp;
+
+    struct Node *temp;
+    temp = head;
+
+    while (temp->next->next !=NULL){
+
         temp = temp->next;
     }
- 
-    free(temp);
-    free(prev);
-    
+
+    free(temp->next);
+    temp->next = NULL;
 }
 
 void display_node(struct Node *first_node){
@@ -161,7 +176,7 @@ int main(){
                     "2.Insert Node at the end\n\t"//done
                     "3.Insert Node at the Middle\n\t"
                     "4.Delete Node from beginning\n\t"//done
-                    "5.Delete Node from End\n\t"
+                    "5.Delete Node from End\n\t"//done
                     "6.Delete Node from Middle\n\t"//done
                     "7.Display the List\n\t"//done
                     "8.Find a Value From the List\n\t"
@@ -204,7 +219,7 @@ int main(){
 
         else if (user_choice == 5){
 
-            delete_end(&head);
+            delete_end(head);
             puts(str1);
             scanf("%d", &user_choice);
         }
