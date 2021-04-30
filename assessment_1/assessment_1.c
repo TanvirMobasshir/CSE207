@@ -58,25 +58,27 @@ void add_middle(struct Node *head){
     scanf("%d", &key);
   
     struct Node *node = (struct Node*)malloc(sizeof(struct Node));
-
-    if (head->data == key){
-        node->data  = new_data;
-        node->next = head->next;
-        head->next = node;
-    }
-
     struct Node *temp = head, *prev;
+
+    node->data = new_data;
+    node->next = NULL;
 
     while (temp != NULL && temp->data != key) {
         prev = temp;
         temp = temp->next;
     }
 
-    
+    if (temp != NULL){
 
-    // node->data  = new_data;
-    // node->next = head->next;
-    // head->next = node;
+        if (temp->data == key){
+
+            node->next = temp->next;
+            temp->next = node;
+        }
+    }    
+    else{
+        printf("Data doesn't exist on the List.\n");
+    }
 }
 
 void delete_begining(struct Node **head){
@@ -168,17 +170,53 @@ void display_node(struct Node *first_node){
     }
 }
 
+void search(struct Node *head){
+
+    if (head == NULL){
+        printf("List is empty, Insert some value first.\n");
+        return;
+    }
+
+    int count = 1, search_data;
+    struct Node *temp, *prev;
+    temp = head;
+
+    printf("Input the data you want to search: ");
+    scanf("%d", &search_data);
+
+    while (temp != NULL && temp->data != search_data) {
+        prev = temp;
+        temp = temp->next;
+        count++;
+    }
+
+    if (temp != NULL){
+    
+        if (temp->data == search_data){
+        
+            printf("The position of your data in the linked list is: %d\n", count);
+        } 
+    }
+    else{
+        printf("Data doesn't exist\n");
+        return;
+    }
+    
+    
+
+}
+
 int main(){
 
     struct Node *head = NULL;
     char *str1 = "\nPlease insert your option:\n\n\t"
-                    "1.Insert Node at the beginning\n\t"//done
-                    "2.Insert Node at the end\n\t"//done
+                    "1.Insert Node at the beginning\n\t"
+                    "2.Insert Node at the end\n\t"
                     "3.Insert Node at the Middle\n\t"
-                    "4.Delete Node from beginning\n\t"//done
-                    "5.Delete Node from End\n\t"//done
-                    "6.Delete Node from Middle\n\t"//done
-                    "7.Display the List\n\t"//done
+                    "4.Delete Node from beginning\n\t"
+                    "5.Delete Node from End\n\t"
+                    "6.Delete Node from Middle\n\t"
+                    "7.Display the List\n\t"
                     "8.Find a Value From the List\n\t"
                     "9.Exit your code\n";
                 
@@ -240,7 +278,7 @@ int main(){
 
         else if (user_choice == 8){
 
-            printf("apprpved %d\n", user_choice);
+            search(head);
             puts(str1);
             scanf("%d", &user_choice);
         }
