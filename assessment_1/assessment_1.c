@@ -12,9 +12,9 @@ void add_begining(struct Node **head){
     printf("Input data at the begining: ");
     scanf("%d", &new_data);
 
-    struct Node* node = (struct Node*)malloc(sizeof(struct Node));
-  
-    node->data  = new_data;
+    struct Node *node = (struct Node *)malloc(sizeof(struct Node));
+
+    node->data = new_data;
     node->next = *head;
     *head = node;
 }
@@ -24,31 +24,30 @@ void add_end(struct Node **head){
     int new_data;
     printf("Input data at the end: ");
     scanf("%d", &new_data);
-    
-    struct Node* node = (struct Node*)malloc(sizeof(struct Node));
+
+    struct Node *node = (struct Node *)malloc(sizeof(struct Node));
     struct Node *last = *head;
-    
-    node->data  = new_data;
+
+    node->data = new_data;
     node->next = NULL;
 
     if (*head == NULL){
-       *head = node;
-       return;
+        *head = node;
+        return;
     }
 
     while (last->next != NULL){
         last = last->next;
     }
-  
+
     last->next = node;
 }
 
 void add_middle(struct Node *head){
 
-    if (head == NULL)
-    {
-      printf("List is empty. Insert some value first.\n");
-      return;
+    if (head == NULL){
+        printf("List is empty. Insert some value first.\n");
+        return;
     }
 
     int key, new_data;
@@ -56,14 +55,14 @@ void add_middle(struct Node *head){
     scanf("%d", &new_data);
     printf("Enter the previous data of the inseted data: ");
     scanf("%d", &key);
-  
-    struct Node *node = (struct Node*)malloc(sizeof(struct Node));
+
+    struct Node *node = (struct Node *)malloc(sizeof(struct Node));
     struct Node *temp = head, *prev;
 
     node->data = new_data;
     node->next = NULL;
 
-    while (temp != NULL && temp->data != key) {
+    while (temp != NULL && temp->data != key){
         prev = temp;
         temp = temp->next;
     }
@@ -75,7 +74,7 @@ void add_middle(struct Node *head){
             node->next = temp->next;
             temp->next = node;
         }
-    }    
+    }
     else{
         printf("Data doesn't exist on the List.\n");
     }
@@ -89,7 +88,7 @@ void delete_begining(struct Node **head){
     }
 
     struct Node *temp = *head;
-    
+
     *head = temp->next;
     free(temp);
 }
@@ -106,18 +105,18 @@ void delete_middle(struct Node **head){
     scanf("%d", &key);
 
     struct Node *temp = *head, *prev;
- 
-    if (temp != NULL && temp->data == key) {
+
+    if (temp != NULL && temp->data == key){
         *head = temp->next;
         free(temp);
         return;
     }
- 
-    while (temp != NULL && temp->data != key) {
+
+    while (temp != NULL && temp->data != key){
         prev = temp;
         temp = temp->next;
     }
- 
+
     if (temp == NULL){
 
         printf("Value doesn't exist in the list\n");
@@ -134,14 +133,14 @@ void delete_end(struct Node *head){
         printf("List is empty, Insert some value first.\n");
         return;
     }
-    else if(head->next == NULL){
+    else if (head->next == NULL){
         free(head);
     }
 
     struct Node *temp;
     temp = head;
 
-    while (temp->next->next !=NULL){
+    while (temp->next->next != NULL){
 
         temp = temp->next;
     }
@@ -156,9 +155,8 @@ void display_node(struct Node *first_node){
 
         printf("List is empty, insert some value first.\n\n");
     }
-
     else{
-        
+
         int i = 1;
         printf("\nData entered in the list:\n");
         while (first_node != NULL){
@@ -184,49 +182,47 @@ void search(struct Node *head){
     printf("Input the data you want to search: ");
     scanf("%d", &search_data);
 
-    while (temp != NULL && temp->data != search_data) {
+    while (temp != NULL && temp->data != search_data){
         prev = temp;
         temp = temp->next;
         count++;
     }
 
     if (temp != NULL){
-    
+
         if (temp->data == search_data){
-        
+
             printf("The position of your data in the linked list is: %d\n", count);
-        } 
+        }
     }
     else{
+
         printf("Data doesn't exist\n");
         return;
     }
-    
-    
-
 }
 
 int main(){
 
     struct Node *head = NULL;
     char *str1 = "\nPlease insert your option:\n\n\t"
-                    "1.Insert Node at the beginning\n\t"
-                    "2.Insert Node at the end\n\t"
-                    "3.Insert Node at the Middle\n\t"
-                    "4.Delete Node from beginning\n\t"
-                    "5.Delete Node from End\n\t"
-                    "6.Delete Node from Middle\n\t"
-                    "7.Display the List\n\t"
-                    "8.Find a Value From the List\n\t"
-                    "9.Exit your code\n";
-                
+                 "1.Insert Node at the beginning\n\t"
+                 "2.Insert Node at the end\n\t"
+                 "3.Insert Node at the Middle\n\t"
+                 "4.Delete Node from beginning\n\t"
+                 "5.Delete Node from End\n\t"
+                 "6.Delete Node from Middle\n\t"
+                 "7.Display the List\n\t"
+                 "8.Find a Value From the List\n\t"
+                 "9.Exit your code\n";
+
     puts(str1);
 
     int user_choice;
     scanf("%d", &user_choice);
 
     while (user_choice > 0 || user_choice < 10){
-    
+
         if (user_choice == 1){
 
             add_begining(&head);
@@ -285,7 +281,7 @@ int main(){
 
         else if (user_choice == 9){
 
-            printf("program terminated\n");
+            printf("Happy Coding ^_^\n\n");
             break;
         }
 
@@ -294,5 +290,4 @@ int main(){
             scanf("%d", &user_choice);
         }
     }
-
 }
