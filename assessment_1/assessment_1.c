@@ -6,10 +6,10 @@ struct Node{
     struct Node *next;
 };
 
-void add_begining(struct Node **head){
+void add_beginning(struct Node **head){
 
     int new_data;
-    printf("Input data at the begining: ");
+    printf("Input data at the beginning: ");
     scanf("%d", &new_data);
 
     struct Node *node = (struct Node *)malloc(sizeof(struct Node));
@@ -53,7 +53,7 @@ void add_middle(struct Node *head){
     int key, new_data;
     printf("Input data: ");
     scanf("%d", &new_data);
-    printf("Enter the previous data of the inseted data: ");
+    printf("Enter the previous data of the inserted data: ");
     scanf("%d", &key);
 
     struct Node *node = (struct Node *)malloc(sizeof(struct Node));
@@ -80,7 +80,7 @@ void add_middle(struct Node *head){
     }
 }
 
-void delete_begining(struct Node **head){
+void delete_beginning(struct Node **head){
 
     if (*head == NULL){
         printf("List is empty, Insert some value first.\n");
@@ -225,7 +225,7 @@ int main(){
 
         if (user_choice == 1){
 
-            add_begining(&head);
+            add_beginning(&head);
             puts(str1);
             scanf("%d", &user_choice);
         }
@@ -246,7 +246,7 @@ int main(){
 
         else if (user_choice == 4){
 
-            delete_begining(&head);
+            delete_beginning(&head);
             puts(str1);
             scanf("%d", &user_choice);
         }
