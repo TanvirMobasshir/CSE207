@@ -37,7 +37,14 @@ void display_node(struct Node *first_node){
 
 void delete_last_node(struct Node **first_node){
 
+    struct Node *node = *first_node, *temp;
+
+    while(node->next->next != NULL){
+        node = node->next;
+    }
     
+    free(node->next);
+    node->next = NULL;
 }
 
 void main(){

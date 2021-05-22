@@ -34,19 +34,19 @@ void delete(struct Node **first_node, int del_pos){
         return;
     }
 
-    struct Node *temp_node = *first_node, *node;
+    struct Node *node = *first_node, *temp;
     int count = 2;
 
     while(count != del_pos){
 
-        temp_node = temp_node->next;
+        node = node->next;
         count++;
     }
 
-    node = temp_node->next;
-    temp_node->next = temp_node->next->next;
-    temp_node = node;
-    free(node);
+    temp = node->next;
+    node->next = node->next->next;
+    node = temp;
+    free(temp);
     printf("\nDeletion completed successfully.\n");
 }
 
