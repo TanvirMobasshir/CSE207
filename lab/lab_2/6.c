@@ -35,6 +35,11 @@ void display_node(struct Node *first_node){
     }
 }
 
+void delete_last_node(struct Node **first_node){
+
+    
+}
+
 void main(){
 
     int node_number, *data_list;
@@ -51,7 +56,11 @@ void main(){
     struct Node *first_node = (struct Node *)malloc(sizeof(struct Node));
 
     create_node(node_number, first_node, data_list);
+
     printf("\nData entered in the list:\n");
+    display_node(first_node);
+    delete_last_node(&first_node);
+    printf("\nData, after deletion of the last node are:\n");
     display_node(first_node);
     printf("\n");
 }

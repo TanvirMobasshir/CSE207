@@ -34,18 +34,20 @@ void delete(struct Node **first_node, int del_pos){
         return;
     }
 
-    struct Node *temp_node, *iterate_node = *first_node;
-    int count = 1;
+    struct Node *temp_node = *first_node, *node;
+    int count = 2;
 
     while(count != del_pos){
 
-        iterate_node = iterate_node->next;
+        temp_node = temp_node->next;
         count++;
     }
 
-    temp_node = iterate_node;
-
-    printf("data: %d\n\n", temp_node->data);
+    node = temp_node->next;
+    temp_node->next = temp_node->next->next;
+    temp_node = node;
+    free(node);
+    printf("\nDeletion completed successfully.\n");
 }
 
 void display_node(struct Node *first_node){
@@ -62,7 +64,7 @@ void display_node(struct Node *first_node){
 
 void main(){
 
-    int node_number, del_pos, *data_list = (int *)malloc(sizeof(int));
+    int node_number, del_pos, *data_list;
 
     printf("Input the number of Nodes: ");
     scanf("%d", &node_number);
@@ -82,7 +84,8 @@ void main(){
     printf("Input the position of node to delete: ");
     scanf("%d", &del_pos);
     delete(&first_node, del_pos);
-    printf("The new list is: \n");
+    printf("\n The new list is: \n");
     display_node(first_node);
     printf("\n");
+    free(first_node);
 }

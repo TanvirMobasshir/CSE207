@@ -44,7 +44,7 @@ void pop(struct Node **first_node){
 
 void main(){
 
-    int node_number, *data_list = (int *)malloc(sizeof(int));
+    int node_number, *data_list;
 
     printf("Input the number of Nodes: ");
     scanf("%d", &node_number);
