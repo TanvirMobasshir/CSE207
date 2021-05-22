@@ -35,6 +35,13 @@ void display_node(struct Node *first_node){
     }
 }
 
+void pop(struct Node **first_node){
+
+    struct Node *temp_node = *first_node;
+    *first_node = temp_node->next;
+    free(temp_node);
+}
+
 void main(){
 
     int node_number, *data_list = (int *)malloc(sizeof(int));
@@ -51,7 +58,11 @@ void main(){
     struct Node *first_node = (struct Node *)malloc(sizeof(struct Node));
 
     create_node(node_number, first_node, data_list);
+
     printf("\nData entered in the list:\n");
+    display_node(first_node);
+    pop(&first_node);
+    printf("\nData, after deletion of first node:\n");
     display_node(first_node);
     printf("\n");
 }

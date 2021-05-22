@@ -24,6 +24,30 @@ void create_node(int node_number, struct Node *first_node, int *data_list){
     }
 }
 
+void delete(struct Node **first_node, int del_pos){
+
+    if(del_pos == 1){
+
+        struct Node *temp_node = *first_node;
+        *first_node = temp_node->next;
+        free(temp_node);
+        return;
+    }
+
+    struct Node *temp_node, *iterate_node = *first_node;
+    int count = 1;
+
+    while(count != del_pos){
+
+        iterate_node = iterate_node->next;
+        count++;
+    }
+
+    temp_node = iterate_node;
+
+    printf("data: %d\n\n", temp_node->data);
+}
+
 void display_node(struct Node *first_node){
 
     int i = 1;
@@ -33,11 +57,12 @@ void display_node(struct Node *first_node){
         first_node = first_node->next;
         i++;
     }
+    printf("\n");
 }
 
 void main(){
 
-    int node_number, *data_list = (int *)malloc(sizeof(int));
+    int node_number, del_pos, *data_list = (int *)malloc(sizeof(int));
 
     printf("Input the number of Nodes: ");
     scanf("%d", &node_number);
@@ -52,6 +77,12 @@ void main(){
 
     create_node(node_number, first_node, data_list);
     printf("\nData entered in the list:\n");
+    display_node(first_node);
+
+    printf("Input the position of node to delete: ");
+    scanf("%d", &del_pos);
+    delete(&first_node, del_pos);
+    printf("The new list is: \n");
     display_node(first_node);
     printf("\n");
 }
