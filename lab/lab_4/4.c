@@ -35,7 +35,7 @@ int isNodeNull(struct Node *head){
 
         return 0;
     } 
-    else {
+    else{
         return 1;
     }
 }
@@ -70,7 +70,7 @@ void parentheses_check(char *str){
     };
 }
 
-int main(){
+void main(){
 
     char *str = (char *)malloc(100 * sizeof(char));
     printf("Enter the string: ");
