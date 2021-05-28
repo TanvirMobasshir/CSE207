@@ -51,7 +51,7 @@ void display(struct Node *first){
     printf("\n");
 }
 
-int main(){
+void main(){
 
     struct Node *head = NULL;
     int a;
@@ -81,7 +81,7 @@ a:
         scanf("%d", &a);
 
     case 4:
-        return 0;
+        return;
 
     default:
         printf("\nwrong option, choose again\n");
