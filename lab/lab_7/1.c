@@ -8,7 +8,7 @@ typedef struct Node{
     struct Node *right, *left;
 }Node;
 
-Node * construcBST(int preorder_array[], int key, int min, int max, int array_size, int *idx){
+Node *construcBST(int preorder_array[], int key, int min, int max, int array_size, int *idx){
 
     if (*idx > array_size){
         return NULL;
